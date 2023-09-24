@@ -1,0 +1,8 @@
+module TagTango
+  module Core
+    module Initializable
+      def self.param(Symbol name, ?untyped type, default: ?^() -> untyped, optional: ?bool) -> void
+      def self.option(Symbol name, ?untyped type, default: ?^() -> untyped, optional: ?bool) -> void
+    end
+  end
+end

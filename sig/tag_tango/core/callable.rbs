@@ -1,0 +1,16 @@
+module TagTango
+  module Core
+    interface _Callable
+      def call: (untyped) -> Dry::Monads::Result
+    end
+
+    module Callable: _Callable
+      SUCCESS: Dry::Monads::Result::Success
+
+      private def self.do_for: (*Symbol names) -> void
+
+      def Success: (untyped) -> Dry::Monads::Result::Success
+      def Failure: (untyped) -> Dry::Monads::Result::Failure
+    end
+  end
+end
