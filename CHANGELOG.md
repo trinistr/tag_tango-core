@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2023-09-24
+
+### Added
+
+- `spec_helper` usable by other parts of TagTango.
+
+### Fixed
+
+- `Initializable.param` always creating a private reader.
+
+## [0.1.1] - 2023-09-24
+
+### Added
+
+- GitHub action workflow `main`.
+
+### Changed
+
+- `bundle exec rake` now also runs `undercover`.
+
 ## [0.1.0] - 2023-09-24
 
 ### Added
