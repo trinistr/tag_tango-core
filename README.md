@@ -1,5 +1,7 @@
 # TagTango::Core
 
+![main workflow](https://github.com/trinistr/tag_tango-core/actions/workflows/main.yml/badge.svg)
+
 This gem encapsulates files used across TagTango.
 
 ## Installation
