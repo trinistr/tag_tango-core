@@ -7,7 +7,6 @@ gemspec
 
 group :build do
   gem "rake", "~> 13.0"
-  gem "rubocop", "~> 1.21"
 end
 
 group :doc do
@@ -16,10 +15,11 @@ end
 
 group :test do
   gem "rspec", "~> 3.0"
+  gem "rubocop", "~> 1.21"
   gem "rubocop-rspec"
-  gem "simplecov", require: false
-  gem "simplecov-lcov", require: false
-  gem "undercover", require: false
+  gem "simplecov"
+  gem "simplecov-lcov"
+  gem "undercover"
 end
 
 group :human do
