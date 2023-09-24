@@ -12,7 +12,7 @@ RSpec.describe TagTango::Core::Initializable, :aggregate_failures do
 
         param :value, :to_sym.to_proc
         param :maybe, default: -> { 1 }
-        param :optional, optional: true
+        param :optional, optional: true, reader: :public
 
         def list_ivars
           instance_variables.to_h { [_1, instance_variable_get(_1)] }
@@ -33,9 +33,11 @@ RSpec.describe TagTango::Core::Initializable, :aggregate_failures do
       )
     end
 
-    it "defines private readers" do
-      expect(instance).not_to respond_to(:value, :maybe, :optional)
-      expect(instance.private_methods).to include :value, :maybe, :optional
+    it "defines private readers by default but allows changing that" do
+      expect(instance).not_to respond_to(:value, :maybe)
+      expect(instance).to respond_to(:optional)
+      expect(instance.private_methods).to include :value, :maybe
+      expect(instance.public_methods).to include :optional
     end
   end
 
@@ -47,7 +49,7 @@ RSpec.describe TagTango::Core::Initializable, :aggregate_failures do
         include TagTango::Core::Initializable
 
         option :value, ->(v) { !v }
-        option :maybe, default: -> { 1 }
+        option :maybe, default: -> { "maybe" }, reader: false
         option :optional, optional: true
 
         def list_ivars
@@ -65,13 +67,14 @@ RSpec.describe TagTango::Core::Initializable, :aggregate_failures do
       expect { instance }.not_to raise_error
 
       expect(instance.list_ivars).to eq(
-        :@value => false, :@maybe => 1, :@optional => 8
+        :@value => false, :@maybe => "maybe", :@optional => 8
       )
     end
 
-    it "defines private readers" do
+    it "defines private readers by default but allows changing that" do
       expect(instance).not_to respond_to(:value, :maybe, :optional)
-      expect(instance.private_methods).to include :value, :maybe, :optional
+      expect(instance.private_methods).to include :value, :optional
+      expect { instance.send(:maybe) }.to raise_error NoMethodError
     end
   end
 end

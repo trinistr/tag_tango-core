@@ -22,7 +22,7 @@ module TagTango
         # @yield block with nested definition
         # @return [self] itself
         def param(name, type = nil, **opts, &)
-          super(name, type, **opts, reader: :private, &)
+          super(name, type, reader: :private, **opts, &)
         end
 
         # Add or redefine a keyword parameter, private by default.
