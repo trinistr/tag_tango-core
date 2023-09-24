@@ -1,0 +1,5 @@
+module TagTango
+  module Core
+    VERSION: String
+  end
+end
