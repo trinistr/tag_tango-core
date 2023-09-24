@@ -9,4 +9,9 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[spec rubocop]
+desc "Run Undercover"
+task :undercover do
+  sh(*%w[bundle exec undercover])
+end
+
+task default: %i[rubocop spec undercover]
