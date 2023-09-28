@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "https://example.com"  # Disable publishing for now
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  spec.files = Dir["lib/**/*"] + %w[spec/spec_helper.rb .rubocop.yml]
+  spec.files = Dir["lib/**/*"] << '.rubocop.yml'
   spec.require_paths = ["lib"]
 
   spec.add_dependency "dry-initializer", "~> 3"
